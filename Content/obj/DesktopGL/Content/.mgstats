@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Font.spritefont","C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/bin/DesktopGL/Content/Font.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21521,0.3141601
+"C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/bullet.png","C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/bin/DesktopGL/Content/Sprites/bullet.xnb","TextureProcessor","Texture2DContent",130,1045,0.1296529
+"C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/player.png","C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/bin/DesktopGL/Content/Sprites/player.xnb","TextureProcessor","Texture2DContent",245,10085,0.1256634

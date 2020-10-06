@@ -1,4 +1,5 @@
 ﻿using Devtober_2020.sprites;
+using Devtober_2020.sprites.Enemies;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -49,6 +50,7 @@ namespace Devtober_2020
             bullet = new Bullet(Vector2.Zero, Content.Load<Texture2D>("Sprites/bullet"));
             player = new Player(Vector2.Zero, Content.Load<Texture2D>("Sprites/player"), bullet);
             sprites.Add(player);
+            sprites.Add(new Enemy(new Vector2(200, 20), Content.Load<Texture2D>("Sprites/player"), bullet));
             Font = Content.Load<SpriteFont>("Font");
         }
 

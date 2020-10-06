@@ -10,8 +10,10 @@ namespace Devtober_2020.sprites
 {
     class Bullet : Sprite, ICloneable
     {
-        private Sprite _parent;
+
+        public Sprite Parent { get; private set; }
         private Vector2 _velocity = Vector2.Zero;
+        
         public Bullet(Vector2 position, Texture2D texture) : base(position, texture)
         {
         }
@@ -31,7 +33,12 @@ namespace Devtober_2020.sprites
         {
             _position = position;
             _velocity = velocity;
-            _parent = parent;
+            Parent = parent;
+        }
+
+        public void collision(Sprite sprite)
+        {
+            isRemoved = true;
         }
     }
 }

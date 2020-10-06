@@ -14,7 +14,7 @@ namespace Devtober_2020.sprites
         private Vector2 _velocity;
         private float _speed = 300f;
         private bool _shooting = false;
-        private static double fireDelay = 100;
+        private static double fireDelay = 250;
         private double fireTimer = 0;
         public int Ammo { get; private set; }
 
@@ -22,7 +22,7 @@ namespace Devtober_2020.sprites
         Bullet _bullet;
         public Player(Vector2 position, Texture2D texture, Bullet bullet) : base(position, texture)
         {
-            Ammo = 100;
+            Ammo = 0;
             _bullet = bullet; 
         }
 
@@ -31,7 +31,7 @@ namespace Devtober_2020.sprites
             _velocity = Vector2.Zero;
             Controls(sprites);
             _position += new Vector2(_velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds, _velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds);
-            
+            checkCollisions(sprites);
             previous = Keyboard.GetState();
             if (_shooting)
                 colour = Color.Red;
@@ -59,13 +59,14 @@ namespace Devtober_2020.sprites
             {
                 _velocity += new Vector2(_speed, 0);
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.X) && previous.IsKeyUp(Keys.X))
-            {
-                _shooting = !_shooting;
-            }
             if (Keyboard.GetState().IsKeyDown(Keys.Z))
             {
                 Shoot(sprites);
+                _shooting = true;
+            }
+            else
+            {
+                _shooting = false;
             }
         }
 
@@ -78,6 +79,26 @@ namespace Devtober_2020.sprites
                 _bullet.Shoot(new Vector2(_position.X + _texture.Width / 2 - _bullet.Rectangle.Width / 2, _position.Y), new Vector2(0, -500f), this);
 
                 sprites.Add(_bullet.Clone() as Bullet);
+            }
+        }
+
+        private void checkCollisions(List<Sprite> sprites)
+        {
+            foreach(var sprite in sprites)
+            {
+                if(sprite is Bullet)
+                {
+                    if((sprite as Bullet).Parent != this && sprite.Rectangle.Intersects(this.Rectangle))
+                    {
+
+                        if(!_shooting)
+                        {
+                            Ammo++;
+                        }
+
+                        (sprite as Bullet).collision(this);
+                    }
+                }
             }
         }
     }

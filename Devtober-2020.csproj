@@ -46,9 +46,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sprites\Bullet.cs" />
-    <Compile Include="sprites\Enemies\Enemy.cs" />
-    <Compile Include="sprites\Player.cs" />
+    <Compile Include="sprites\Units\Enemies\BasicEnemy.cs" />
+    <Compile Include="sprites\Units\Enemies\Enemy.cs" />
+    <Compile Include="sprites\Units\Player.cs" />
     <Compile Include="sprites\Sprite.cs" />
+    <Compile Include="sprites\Units\Unit.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

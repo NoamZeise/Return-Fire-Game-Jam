@@ -7,37 +7,47 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Devtober_2020.sprites
+namespace Devtober_2020.sprites.Units
 {
-    class Player : Sprite
+    class Player : Unit
     {
-        private Vector2 _velocity;
         private float _speed = 300f;
         private bool _shooting = false;
         private static double fireDelay = 250;
         private double fireTimer = 0;
         public int Ammo { get; private set; }
-
         private KeyboardState previous;
-        Bullet _bullet;
-        public Player(Vector2 position, Texture2D texture, Bullet bullet) : base(position, texture)
+        public Player(Vector2 position, Texture2D texture, Bullet bullet) : base(position, texture, bullet)
         {
+            health = 3;
             Ammo = 0;
-            _bullet = bullet; 
+            depth = 0.9f;
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
         {
             _velocity = Vector2.Zero;
             Controls(sprites);
-            _position += new Vector2(_velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds, _velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds);
-            checkCollisions(sprites);
-            previous = Keyboard.GetState();
-            if (_shooting)
-                colour = Color.Red;
-            else
-                colour = Color.White;
+            updatePosition((float)gameTime.ElapsedGameTime.TotalSeconds);
+            _position.X = MathHelper.Clamp(_position.X, 0, Game1.SCREEN_WIDTH - Rectangle.Width);
+            _position.Y = MathHelper.Clamp(_position.Y, 0, Game1.SCREEN_HEIGHT - Rectangle.Height);
+            if (checkBulletCollisions(sprites))
+            {
+                if (_shooting)
+                    health--;
+                else
+                    Ammo++;
+            }
 
+            if (health <= 0)
+                isRemoved = true;
+
+            if (_shooting)
+                colour = Color.BlueViolet;
+            else
+                colour = Color.DarkGray;
+
+            previous = Keyboard.GetState();
             fireTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
         }
 
@@ -70,35 +80,14 @@ namespace Devtober_2020.sprites
             }
         }
 
-        void Shoot(List<Sprite> sprites)
+        protected override void Shoot(List<Sprite> sprites)
         {
             if(fireTimer > fireDelay && Ammo > 0 && _shooting)
             {
                 fireTimer = 0;
                 Ammo--;
-                _bullet.Shoot(new Vector2(_position.X + _texture.Width / 2 - _bullet.Rectangle.Width / 2, _position.Y), new Vector2(0, -500f), this);
-
+                base.Shoot(new Vector2(0, -500f));
                 sprites.Add(_bullet.Clone() as Bullet);
-            }
-        }
-
-        private void checkCollisions(List<Sprite> sprites)
-        {
-            foreach(var sprite in sprites)
-            {
-                if(sprite is Bullet)
-                {
-                    if((sprite as Bullet).Parent != this && sprite.Rectangle.Intersects(this.Rectangle))
-                    {
-
-                        if(!_shooting)
-                        {
-                            Ammo++;
-                        }
-
-                        (sprite as Bullet).collision(this);
-                    }
-                }
             }
         }
     }

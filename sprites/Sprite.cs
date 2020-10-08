@@ -11,8 +11,9 @@ namespace Devtober_2020.sprites
     public abstract class Sprite
     {
         protected Vector2 _position;
-        protected Texture2D _texture;
+        Texture2D _texture;
         protected Color colour = Color.White;
+        protected float depth = 0.1f;
         public bool isRemoved { get; protected set; }
         public Rectangle Rectangle
         {
@@ -31,7 +32,7 @@ namespace Devtober_2020.sprites
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, colour);
+            spriteBatch.Draw(_texture, _position, null, colour, 0f, Vector2.Zero, 1f, SpriteEffects.None, depth);
         }
         
     }

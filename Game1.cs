@@ -1,5 +1,6 @@
 ﻿using Devtober_2020.sprites;
-using Devtober_2020.sprites.Enemies;
+using Devtober_2020.sprites.Units;
+using Devtober_2020.sprites.Units.Enemies;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -15,14 +16,22 @@ namespace Devtober_2020
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        public static int SCREEN_WIDTH = 640;
+        public static int SCREEN_HEIGHT = 480;
+
         Player player;
         Bullet bullet;
         List<Sprite> sprites;
         SpriteFont Font;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            graphics.PreferredBackBufferWidth = SCREEN_WIDTH;
+            graphics.PreferredBackBufferHeight = SCREEN_HEIGHT;
+            graphics.ApplyChanges();
         }
 
         /// <summary>
@@ -48,9 +57,9 @@ namespace Devtober_2020
             spriteBatch = new SpriteBatch(GraphicsDevice);
             sprites = new List<Sprite>();
             bullet = new Bullet(Vector2.Zero, Content.Load<Texture2D>("Sprites/bullet"));
-            player = new Player(Vector2.Zero, Content.Load<Texture2D>("Sprites/player"), bullet);
+            player = new Player(new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 100), Content.Load<Texture2D>("Sprites/player"), bullet);
             sprites.Add(player);
-            sprites.Add(new Enemy(new Vector2(200, 20), Content.Load<Texture2D>("Sprites/player"), bullet));
+            sprites.Add(new BasicEnemy(new Vector2(200, -30), Content.Load<Texture2D>("Sprites/player"), bullet));
             Font = Content.Load<SpriteFont>("Font");
         }
 
@@ -90,12 +99,13 @@ namespace Devtober_2020
         {
             GraphicsDevice.Clear(Color.BurlyWood);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.FrontToBack);
 
             foreach (var sprite in sprites)
                 sprite.Draw(spriteBatch);
 
-            spriteBatch.DrawString(Font, "Ammo : " + player.Ammo, new Vector2(20, 20), Color.White);
+            spriteBatch.DrawString(Font, "Ammo : " + player.Ammo, new Vector2(20, 20), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+            spriteBatch.DrawString(Font, "Health : " + player.health, new Vector2(20, 40), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
 
             spriteBatch.End();
 

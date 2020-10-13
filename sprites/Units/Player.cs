@@ -13,7 +13,7 @@ namespace Devtober_2020.sprites.Units
     {
         private float _speed = 300f;
         private bool _shooting = false;
-        private static double fireDelay = 250;
+        private static double FIRE_DELAY = 250;
         private double fireTimer = 0;
         public int Ammo { get; private set; }
         private KeyboardState previous;
@@ -82,7 +82,7 @@ namespace Devtober_2020.sprites.Units
 
         protected override void Shoot(List<Sprite> sprites)
         {
-            if(fireTimer > fireDelay && Ammo > 0 && _shooting)
+            if(fireTimer > FIRE_DELAY && Ammo > 0 && _shooting)
             {
                 fireTimer = 0;
                 Ammo--;
@@ -90,5 +90,8 @@ namespace Devtober_2020.sprites.Units
                 sprites.Add(_bullet.Clone() as Bullet);
             }
         }
+
+        public void TakeDamage() =>
+            health--;
     }
 }

@@ -21,8 +21,12 @@ namespace Devtober_2020
 
         Player player;
         Bullet bullet;
+        BasicEnemy basicEnemy;
         List<Sprite> sprites;
         SpriteFont Font;
+
+        double enemyTimer = 0;
+        static double ENEMY_SPAWN_RATE = 5;
 
         public Game1()
         {
@@ -58,9 +62,10 @@ namespace Devtober_2020
             sprites = new List<Sprite>();
             bullet = new Bullet(Vector2.Zero, Content.Load<Texture2D>("Sprites/bullet"));
             player = new Player(new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 100), Content.Load<Texture2D>("Sprites/player"), bullet);
-            sprites.Add(player);
-            sprites.Add(new BasicEnemy(new Vector2(200, -30), Content.Load<Texture2D>("Sprites/player"), bullet));
+            basicEnemy = new BasicEnemy(new Vector2(200, -30), Content.Load<Texture2D>("Sprites/player"), bullet);
             Font = Content.Load<SpriteFont>("Font");
+
+            sprites.Add(player);
         }
 
         /// <summary>
@@ -81,14 +86,30 @@ namespace Devtober_2020
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+            UpdateSprites(gameTime);
 
+            
+
+            enemyTimer += gameTime.ElapsedGameTime.TotalSeconds;
+            base.Update(gameTime);
+        }
+
+        private void UpdateSprites(GameTime gameTime)
+        {
+            if(enemyTimer > ENEMY_SPAWN_RATE)
+            {
+                enemyTimer = 0;
+                sprites.Add(basicEnemy.Clone() as BasicEnemy);
+            }    
             for (int i = 0; i < sprites.Count; i++)
             {
                 sprites[i].Update(gameTime, sprites);
+                if (sprites[i] is Enemy)
+                    if ((sprites[i] as Enemy).ReachedBottom)
+                        player.TakeDamage();
                 if (sprites[i].isRemoved)
                     sprites.RemoveAt(i--);
             }
-            base.Update(gameTime);
         }
 
         /// <summary>

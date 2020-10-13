@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Devtober_2020.sprites.Units.Enemies;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,8 @@ namespace Devtober_2020.sprites.Units
                 {
                     if ((sprite as Bullet).Parent != this && sprite.Rectangle.Intersects(this.Rectangle))
                     {
+                        if (this is Enemy && (sprite as Bullet).Parent is Enemy)
+                            continue;
                         (sprite as Bullet).collision(this);
                         return true;
                     }

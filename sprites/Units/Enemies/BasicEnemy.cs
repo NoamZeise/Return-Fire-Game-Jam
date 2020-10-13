@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace Devtober_2020.sprites.Units.Enemies
 {
-    class BasicEnemy : Enemy
+    class BasicEnemy : Enemy, ICloneable
     {
         public BasicEnemy(Vector2 position, Texture2D texture, Bullet bullet) : base(position, texture, bullet)
         {
             _velocity = new Vector2(200f, 20f);
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
@@ -28,5 +33,6 @@ namespace Devtober_2020.sprites.Units.Enemies
             if(_position.X >= Game1.SCREEN_WIDTH - Rectangle.Width)
                 _velocity.X = -Math.Abs(_velocity.X);
         }
+
     }
 }

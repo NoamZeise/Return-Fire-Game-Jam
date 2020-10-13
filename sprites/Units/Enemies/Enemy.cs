@@ -13,6 +13,7 @@ namespace Devtober_2020.sprites.Units.Enemies
 
         protected double fireDelay = 400;
         private double fireTimer = 0;
+        public bool ReachedBottom = false;
         public Enemy(Vector2 position, Texture2D texture, Bullet bullet) : base(position, texture, bullet)
         {
             colour = Color.Tomato;
@@ -24,8 +25,11 @@ namespace Devtober_2020.sprites.Units.Enemies
         {
             Shoot(sprites);
             updatePosition((float)gameTime.ElapsedGameTime.TotalSeconds);
-            if (_position.Y > Game1.SCREEN_HEIGHT + 200)
+            if (_position.Y > Game1.SCREEN_HEIGHT + Rectangle.Height)
+            {
                 isRemoved = true;
+                ReachedBottom = true;
+            }
             if (checkBulletCollisions(sprites))
             {
                 health--;

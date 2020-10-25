@@ -127,7 +127,7 @@ namespace Devtober_2020.Controls
                     else if (hp <= 8)
                         clone.setColor(Color.PaleVioletRed);
                     else
-                        clone.setColor(Color.Black);
+                        clone.setColor(Color.DarkGray);
 
                     enemyQueue.Add(clone, Convert.ToDouble(xmlR.GetAttribute("start")));
                 }

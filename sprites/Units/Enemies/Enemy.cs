@@ -18,6 +18,7 @@ namespace Devtober_2020.sprites.Units.Enemies
         {
             depth = 0.8f;
             health = 5;
+            bullet.setColour(Color.White);
             Pattern = new Pattern(this, _bullet, _position, 1, 3, 0f, 200f, 0, 0, false);
         }
 

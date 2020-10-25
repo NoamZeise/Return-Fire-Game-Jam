@@ -27,6 +27,7 @@ namespace Devtober_2020.sprites.Units
             health = 3;
             Ammo = 0;
             depth = 0.9f;
+            bullet.setColour(Color.LightBlue);
             gun = new Pattern(this, bullet, this._position, 1, 0.3 ,0f, 500f, 0, 180, true);
             basicParameters = new float[6] { 1, 0.3f, 0f, 500f, 0f, 180f};
         }
@@ -128,5 +129,8 @@ namespace Devtober_2020.sprites.Units
             _position = position;
             isRemoved = false;
         }
+
+        public int getHealth =>
+            (int)health;
     }
 }

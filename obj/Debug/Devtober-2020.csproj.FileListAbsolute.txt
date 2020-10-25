@@ -32,3 +32,6 @@ C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Deb
 C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\help-selected.xnb
 C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\help-unselected.xnb
 C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\helpscreen.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\background.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\healthBar.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\ammo.xnb

@@ -45,5 +45,10 @@ namespace Devtober_2020.sprites
         {
             isRemoved = true;
         }
+
+        public void setColour(Color color)
+        {
+            colour = color;
+        }
     }
 }

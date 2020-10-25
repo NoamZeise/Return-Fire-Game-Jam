@@ -29,6 +29,9 @@ namespace Devtober_2020
         Bullet bullet;
         List<Sprite> sprites;
         SpriteFont Font;
+        Background background;
+        Texture2D hpTex;
+        Texture2D ammoTex;
 
         EnemySpawnManager spawnManager;
 
@@ -58,6 +61,45 @@ namespace Devtober_2020
 
             powerUpElimintaions = rnd.Next(3, 7);
             powerups = new List<Powerup>();
+        }
+
+        /// <summary>
+        /// Allows the game to perform any initialization it needs to before starting to run.
+        /// This is where it can query for any required services and load any non-graphic
+        /// related content.  Calling base.Initialize will enumerate through any components
+        /// and initialize them as well.
+        /// </summary>
+        protected override void Initialize()
+        {
+            // TODO: Add your initialization logic here
+
+            base.Initialize();
+        }
+
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            sprites = new List<Sprite>();
+            bullet = new Bullet(Vector2.Zero, Content.Load<Texture2D>("Sprites/bullet"));
+            player = new Player(new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 100), Content.Load<Texture2D>("Sprites/player"), bullet.Clone() as Bullet);
+            Font = Content.Load<SpriteFont>("Font");
+            spawnManager = new EnemySpawnManager(new Enemy(new Vector2(200, -30), Content.Load<Texture2D>("Sprites/player"), bullet.Clone() as Bullet));
+            sprites.Add(player);
+
+            powerups.Add(new Triple(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/puTriple")));
+            powerups.Add(new Rapid(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/rapid")));
+            powerups.Add(new Swirl(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/swirl")));
+            hpPower = new hpUp(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/hp"));
+
+            hpTex = Content.Load<Texture2D>("Sprites/healthBar");
+            ammoTex = Content.Load<Texture2D>("Sprites/ammo");
+            background = new Background(Vector2.Zero, Content.Load<Texture2D>("Sprites/background"));
+            sprites.Add(background);
 
             menuScreen = Content.Load<Texture2D>("Menu/menuscreen");
             helpScreen = Content.Load<Texture2D>("Menu/helpscreen");
@@ -84,40 +126,6 @@ namespace Devtober_2020
         private void Help_Click(object sender, EventArgs e)
         {
             showHelp = true;
-        }
-
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-
-            base.Initialize();
-        }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            sprites = new List<Sprite>();
-            bullet = new Bullet(Vector2.Zero, Content.Load<Texture2D>("Sprites/bullet"));
-            player = new Player(new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 100), Content.Load<Texture2D>("Sprites/player"), bullet);
-            Font = Content.Load<SpriteFont>("Font");
-            spawnManager = new EnemySpawnManager(new Enemy(new Vector2(200, -30), Content.Load<Texture2D>("Sprites/player"), bullet));
-            sprites.Add(player);
-
-            powerups.Add(new Triple(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/puTriple")));
-            powerups.Add(new Rapid(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/rapid")));
-            powerups.Add(new Swirl(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/swirl")));
-            hpPower = new hpUp(Vector2.Zero, Content.Load<Texture2D>("Sprites/PowerUp/hp"));
         }
 
         /// <summary>
@@ -220,6 +228,8 @@ namespace Devtober_2020
                 player.Reset(new Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT - 100));
                 spawnManager.Reset();
                 sprites.Add(player);
+                background.Reset();
+                sprites.Add(background);
             }
         }
 
@@ -261,11 +271,16 @@ namespace Devtober_2020
             }
             else
             {
+                for (int i = 0; i < player.getHealth; i++)
+                {
+                    spriteBatch.Draw(hpTex, new Vector2(20 + i * (hpTex.Width + 5), SCREEN_HEIGHT - (hpTex.Height + 17)),null ,Color.White,0f, Vector2.Zero, 1f, SpriteEffects.None, 1f );
+                }
+                for (int i = 0; i < player.Ammo; i++)
+                {
+                    spriteBatch.Draw(ammoTex, new Vector2(SCREEN_WIDTH - (ammoTex.Width + 2) - (i * (ammoTex.Width + 2)), SCREEN_HEIGHT - (ammoTex.Height + 1)), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+                }
                 foreach (var sprite in sprites)
                     sprite.Draw(spriteBatch);
-
-                spriteBatch.DrawString(Font, "Ammo : " + player.Ammo, new Vector2(20, 20), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
-                spriteBatch.DrawString(Font, "Health : " + player.health, new Vector2(20, 40), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             }
             spriteBatch.End();
 

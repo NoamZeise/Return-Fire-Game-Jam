@@ -45,6 +45,7 @@
     <Compile Include="Controls\EnemySpawnManager.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Menu\Button.cs" />
+    <Compile Include="sprites\Background.cs" />
     <Compile Include="sprites\Powerups\hp.cs" />
     <Compile Include="sprites\Powerups\Powerup.cs" />
     <Compile Include="Program.cs" />

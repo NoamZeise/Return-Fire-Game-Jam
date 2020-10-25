@@ -22,6 +22,11 @@ namespace Devtober_2020.sprites
         {
             return this.MemberwiseClone();
         }
+        public object Clone(Vector2 position, Vector2 velocity, Sprite parent)
+        {
+            Shoot(position, velocity, parent);
+            return this.MemberwiseClone();
+        }
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
         {

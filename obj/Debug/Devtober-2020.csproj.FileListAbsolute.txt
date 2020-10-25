@@ -20,3 +20,15 @@ C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\obj\Debug\Devtober-2020.
 C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\obj\Debug\Devtober-2020.pdb
 C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\bullet.xnb
 C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Font.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\PowerUp\puTriple.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\PowerUp\rapid.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\PowerUp\hp.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Sprites\PowerUp\swirl.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\exit-selected.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\exit-unselected.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\menuscreen.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\play-selected.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\play-unselected.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\help-selected.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\help-unselected.xnb
+C:\Users\noam4\source\repos\Devtober-2020\Devtober-2020\bin\DesktopGL\AnyCPU\Debug\Content\Menu\helpscreen.xnb

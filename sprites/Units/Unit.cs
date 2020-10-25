@@ -11,9 +11,9 @@ namespace Devtober_2020.sprites.Units
 {
     abstract class Unit : Sprite
     {
-        protected Bullet _bullet;
+        public Bullet _bullet;
         protected Vector2 _velocity;
-        public int health { get; protected set; }
+        public double health { get; protected set; }
         public Unit(Vector2 position, Texture2D texture, Bullet bullet) : base(position, texture)
         {
             _bullet = bullet;
@@ -41,8 +41,8 @@ namespace Devtober_2020.sprites.Units
                         _position += new Vector2(_velocity.X * elapsedTime, _velocity.Y * elapsedTime);
 
         protected void Shoot(Vector2 velocity) =>
-            _bullet.Shoot(new Vector2(Rectangle.X + Rectangle.Width / 2 - _bullet.Rectangle.Width / 2, Rectangle.Y), velocity, this);
-        protected abstract void Shoot(List<Sprite> sprites);
+            _bullet.Shoot(new Vector2((Rectangle.X + Rectangle.Width / 2 - _bullet.Rectangle.Width / 2), Rectangle.Y), velocity, this);
+        //protected abstract void Shoot(List<Sprite> sprites);
         
     }
 }

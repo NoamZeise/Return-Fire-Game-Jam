@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enemies difficulty="easy-medium" delay="5">>
+	<enemy type="basic" start="0" initialX="100" initialY="-60" velX="0" velY="40" shooter="20" delay="0.5" spin="-300" speed="150" separation="123" initial="0" hp="6"/>
+	<enemy type="basic" start="0" initialX="500" initialY="-60" velX="0" velY="40" shooter="20" delay="0.5" spin="300" speed="150" separation="123" initial="0" hp="6"/>
+</enemies>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enemies difficulty="medium-hard" delay="10">
+	<enemy type="basic" start="0" initialX="200" initialY="-60" velX="0" velY="30" shooter="4" delay="1.5" spin="0" speed="150" separation="10" initial="-15" hp="3"/>
+	<enemy type="basic" start="0" initialX="500" initialY="-60" velX="0" velY="30" shooter="4" delay="1.5" spin="0" speed="150" separation="10" initial="-15" hp="3"/>
+	<enemy type="basic" start="4" initialX="200" initialY="-60" velX="0" velY="30" shooter="4" delay="1.5" spin="0" speed="150" separation="10" initial="-15" hp="3"/>
+	<enemy type="basic" start="4" initialX="500" initialY="-60" velX="0" velY="30" shooter="4" delay="1.5" spin="0" speed="150" separation="10" initial="-15" hp="3"/>
+	<enemy type="basic" start="8" initialX="200" initialY="-60" velX="0" velY="30" shooter="4" delay="1.5" spin="0" speed="150" separation="10" initial="-15" hp="3"/>
+	<enemy type="basic" start="8" initialX="500" initailY="-60" velX="0" velY="30" shooter="4" delay="1.5" spin="0" speed="150" separation="10" initial="-15" hp="3"/>
+</enemies>

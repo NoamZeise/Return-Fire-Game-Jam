@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Devtober_2020.Controls;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -8,22 +9,38 @@ using System.Threading.Tasks;
 
 namespace Devtober_2020.sprites.Units.Enemies
 {
-    abstract class Enemy : Unit
+    class Enemy : Unit, ICloneable
     {
-
-        protected double fireDelay = 400;
-        private double fireTimer = 0;
         public bool ReachedBottom = false;
+
+        public Pattern Pattern;
         public Enemy(Vector2 position, Texture2D texture, Bullet bullet) : base(position, texture, bullet)
         {
-            colour = Color.Tomato;
             depth = 0.8f;
             health = 5;
+            Pattern = new Pattern(this, _bullet, _position, 1, 3, 0f, 200f, 0, 0, false);
         }
+
+        public object Clone()
+        {
+            Pattern = new Pattern(this, _bullet, _position, 1, 3, 0f, 200f, 0, 0, false);
+            _velocity = new Vector2(200f, 20f);
+            return this.MemberwiseClone();
+        }
+
+        public object Clone(Vector2 uPosition, Vector2 uVelocity, int hp)
+        {
+            _velocity = uVelocity;
+            _position = uPosition;
+            health = hp;
+            return this.MemberwiseClone();
+        }
+        
 
         public override void Update(GameTime gameTime, List<Sprite> sprites)
         {
-            Shoot(sprites);
+            Pattern.Update(gameTime, sprites);
+
             updatePosition((float)gameTime.ElapsedGameTime.TotalSeconds);
             if (_position.Y > Game1.SCREEN_HEIGHT + Rectangle.Height)
             {
@@ -37,18 +54,24 @@ namespace Devtober_2020.sprites.Units.Enemies
             if (health <= 0)
                 isRemoved = true;
 
-            fireTimer += gameTime.ElapsedGameTime.TotalMilliseconds;
+            movePattern();
         }
 
-        protected override void Shoot(List<Sprite> sprites)
+
+        public virtual void playerCollision() =>
+            isRemoved = true;
+
+        void movePattern()
         {
-            if (fireTimer > fireDelay)
-            {
-                fireTimer = 0;
-                base.Shoot(new Vector2(0, 400f));
-                sprites.Add(_bullet.Clone() as Bullet);
-            }
+            if (_position.X <= 0)
+                _velocity.X = Math.Abs(_velocity.X);
+            if (_position.X >= Game1.SCREEN_WIDTH - Rectangle.Width)
+                _velocity.X = -Math.Abs(_velocity.X);
         }
-        protected abstract void movePattern();
-     }
+
+        public void setColor(Color color)
+        {
+            this.colour = color;
+        }
+    }
 }

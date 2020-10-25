@@ -42,12 +42,19 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controls\EnemySpawnManager.cs" />
     <Compile Include="Game1.cs" />
+    <Compile Include="Menu\Button.cs" />
+    <Compile Include="sprites\Powerups\hp.cs" />
+    <Compile Include="sprites\Powerups\Powerup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="sprites\Bullet.cs" />
-    <Compile Include="sprites\Units\Enemies\BasicEnemy.cs" />
+    <Compile Include="sprites\Powerups\Rapid.cs" />
+    <Compile Include="sprites\Powerups\swirl.cs" />
+    <Compile Include="sprites\Powerups\Triple.cs" />
     <Compile Include="sprites\Units\Enemies\Enemy.cs" />
+    <Compile Include="Controls\Pattern.cs" />
     <Compile Include="sprites\Units\Player.cs" />
     <Compile Include="sprites\Sprite.cs" />
     <Compile Include="sprites\Units\Unit.cs" />

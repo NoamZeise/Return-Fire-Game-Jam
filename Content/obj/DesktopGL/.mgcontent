@@ -5,10 +5,34 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Font.spritefont</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/exit-selected.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/exit-unselected.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/helpscreen.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/help-selected.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/help-unselected.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/menuscreen.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/play-selected.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Menu/play-unselected.png</File>
     <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/bullet.png</File>
-    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/player.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/playerStar.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/PowerUp/hp.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/PowerUp/puTriple.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/PowerUp/rapid.png</File>
+    <File>C:/Users/noam4/source/repos/Devtober-2020/Devtober-2020/Content/Sprites/PowerUp/swirl.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File>Sprites/player.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
